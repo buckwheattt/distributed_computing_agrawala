@@ -197,3 +197,28 @@
 [2025-11-25T22:16:58.677734800] [Lamport: 25] [node-8081] Sending /syncSharedValue to http://localhost:8082 url=http://localhost:8082/syncSharedValue
 [2025-11-25T22:16:58.683046600] [Lamport: 25] [node-8081] POST /syncSharedValue -> http://localhost:8082 (code 200)
 [2025-11-25T22:16:58.683046600] [Lamport: 25] [node-8081] SYNC broadcast complete: val=13
+[2025-11-25T22:18:48.713170800] [Lamport: 25] [node-8081] Received REQUEST from http://localhost:8083 ts=32
+[2025-11-25T22:18:48.713170800] [Lamport: 33] [node-8081] Handling REQUEST from http://localhost:8083 ts=32, myTs=25, requesting=false, replyNow=true
+[2025-11-25T22:18:48.713170800] [Lamport: 33] [node-8081] Sending /reply to http://localhost:8083 url=http://localhost:8083/reply
+[2025-11-25T22:18:48.721313200] [Lamport: 33] [node-8081] POST /reply -> http://localhost:8083 (code 200)
+[2025-11-25T22:18:49.745673600] [Lamport: 33] [node-8081] SYNC: shared variable updated to 14 from http://localhost:8083
+[2025-11-25T22:19:12.802701100] [Lamport: 33] [node-8081] Received REQUEST from http://localhost:8080 ts=35
+[2025-11-25T22:19:12.802701100] [Lamport: 36] [node-8081] Handling REQUEST from http://localhost:8080 ts=35, myTs=25, requesting=false, replyNow=true
+[2025-11-25T22:19:12.803724400] [Lamport: 36] [node-8081] Sending /reply to http://localhost:8080 url=http://localhost:8080/reply
+[2025-11-25T22:19:12.808235300] [Lamport: 36] [node-8081] POST /reply -> http://localhost:8080 (code 200)
+[2025-11-25T22:19:13.850209500] [Lamport: 36] [node-8081] SYNC: shared variable updated to 15 from http://localhost:8080
+[2025-11-25T22:19:22.663758400] [Lamport: 36] [node-8081] Received REQUEST from http://localhost:8080 ts=36
+[2025-11-25T22:19:22.663758400] [Lamport: 37] [node-8081] Handling REQUEST from http://localhost:8080 ts=36, myTs=25, requesting=false, replyNow=true
+[2025-11-25T22:19:22.670830800] [Lamport: 37] [node-8081] Sending /reply to http://localhost:8080 url=http://localhost:8080/reply
+[2025-11-25T22:19:22.676029300] [Lamport: 37] [node-8081] POST /reply -> http://localhost:8080 (code 200)
+[2025-11-25T22:19:23.704407400] [Lamport: 37] [node-8081] SYNC: shared variable updated to 22 from http://localhost:8080
+[2025-11-25T22:20:07.184247800] [Lamport: 37] [node-8081] Received REQUEST from http://localhost:8083 ts=38
+[2025-11-25T22:20:07.185234] [Lamport: 39] [node-8081] Handling REQUEST from http://localhost:8083 ts=38, myTs=25, requesting=false, replyNow=true
+[2025-11-25T22:20:07.186229400] [Lamport: 39] [node-8081] Sending /reply to http://localhost:8083 url=http://localhost:8083/reply
+[2025-11-25T22:20:07.193225300] [Lamport: 39] [node-8081] POST /reply -> http://localhost:8083 (code 200)
+[2025-11-25T22:20:08.219026800] [Lamport: 39] [node-8081] SYNC: shared variable updated to 23 from http://localhost:8083
+[2025-11-25T22:20:30.124832400] [Lamport: 39] [node-8081] Received REQUEST from http://localhost:8083 ts=39
+[2025-11-25T22:20:30.124832400] [Lamport: 40] [node-8081] Handling REQUEST from http://localhost:8083 ts=39, myTs=25, requesting=false, replyNow=true
+[2025-11-25T22:20:30.127820300] [Lamport: 40] [node-8081] Sending /reply to http://localhost:8083 url=http://localhost:8083/reply
+[2025-11-25T22:20:30.132822100] [Lamport: 40] [node-8081] POST /reply -> http://localhost:8083 (code 200)
+[2025-11-25T22:20:31.158266800] [Lamport: 40] [node-8081] SYNC: shared variable updated to 44 from http://localhost:8083
