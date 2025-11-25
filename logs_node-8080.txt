@@ -128,3 +128,26 @@
 [2025-11-25T19:40:18.629305200] [Lamport: 1] [node-8080] Latch created with count=1
 [2025-11-25T19:40:18.645294400] [Lamport: 1] [node-8080] Sending /request to http://localhost:8081 url=http://localhost:8081/request
 [2025-11-25T19:40:18.887700400] [Lamport: 1] [node-8080] Received REPLY from http://localhost:8081
+[2025-11-25T19:48:59.786294800] [Lamport: 0] [node-8080] Node created at http://localhost:8080
+[2025-11-25T19:49:10.566696800] [Lamport: 0] [node-8080] New peer added: http://localhost:8081
+[2025-11-25T19:49:22.811314200] [Lamport: 1] [node-8080] Requesting critical section, ts=1, peers=[http://localhost:8081]
+[2025-11-25T19:49:22.815303] [Lamport: 1] [node-8080] Latch created with count=1
+[2025-11-25T19:49:22.823296200] [Lamport: 1] [node-8080] Sending /request to http://localhost:8081 url=http://localhost:8081/request
+[2025-11-25T19:49:22.978026700] [Lamport: 1] [node-8080] Received REPLY from http://localhost:8081
+[2025-11-25T19:49:22.979029500] [Lamport: 1] [node-8080] receiveReply from http://localhost:8081, latch=1
+[2025-11-25T19:49:22.980030300] [Lamport: 1] [node-8080] Latch after countDown = 0
+[2025-11-25T19:49:23.002026500] [Lamport: 1] [node-8080] POST /request -> http://localhost:8081 (code 200)
+[2025-11-25T19:49:23.004026600] [Lamport: 1] [node-8080] Entered critical section
+[2025-11-25T19:49:35.606907900] [Lamport: 1] [node-8080] Leaving critical section, sending deferred replies to: []
+[2025-11-25T19:50:02.704316100] [Lamport: 1] [node-8080] Received REQUEST from http://localhost:8081 ts=3
+[2025-11-25T19:50:02.712326300] [Lamport: 4] [node-8080] Handling REQUEST from http://localhost:8081 ts=3, myTs=1, requesting=false, replyNow=true
+[2025-11-25T19:50:02.713308] [Lamport: 4] [node-8080] Sending /reply to http://localhost:8081 url=http://localhost:8081/reply
+[2025-11-25T19:50:02.720324900] [Lamport: 4] [node-8080] POST /reply -> http://localhost:8081 (code 200)
+[2025-11-25T19:50:16.173146500] [Lamport: 5] [node-8080] Requesting critical section, ts=5, peers=[http://localhost:8081]
+[2025-11-25T19:50:16.173146500] [Lamport: 5] [node-8080] Latch created with count=1
+[2025-11-25T19:50:16.174160500] [Lamport: 5] [node-8080] Sending /request to http://localhost:8081 url=http://localhost:8081/request
+[2025-11-25T19:50:16.183182700] [Lamport: 5] [node-8080] POST /request -> http://localhost:8081 (code 200)
+[2025-11-25T19:50:28.885123200] [Lamport: 5] [node-8080] Received REPLY from http://localhost:8081
+[2025-11-25T19:50:28.886131200] [Lamport: 5] [node-8080] receiveReply from http://localhost:8081, latch=1
+[2025-11-25T19:50:28.888145900] [Lamport: 5] [node-8080] Latch after countDown = 0
+[2025-11-25T19:50:28.888145900] [Lamport: 5] [node-8080] Entered critical section

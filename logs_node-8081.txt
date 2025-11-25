@@ -74,3 +74,22 @@
 [2025-11-25T19:40:18.845702] [Lamport: 2] [node-8081] Handling REQUEST from http://localhost:8080 ts=1, myTs=0, requesting=false, replyNow=true
 [2025-11-25T19:40:18.858701400] [Lamport: 2] [node-8081] Sending /reply to http://localhost:8080 url=http://localhost:8080/reply
 [2025-11-25T19:46:30.948406500] [Lamport: 2] [node-8081] POST error to http://localhost:8080/reply: Connection refused: connect
+[2025-11-25T19:49:05.934778800] [Lamport: 0] [node-8081] Node created at http://localhost:8081
+[2025-11-25T19:49:22.943031100] [Lamport: 0] [node-8081] Received REQUEST from http://localhost:8080 ts=1
+[2025-11-25T19:49:22.953035600] [Lamport: 2] [node-8081] Handling REQUEST from http://localhost:8080 ts=1, myTs=0, requesting=false, replyNow=true
+[2025-11-25T19:49:22.961030400] [Lamport: 2] [node-8081] Sending /reply to http://localhost:8080 url=http://localhost:8080/reply
+[2025-11-25T19:49:22.987031500] [Lamport: 2] [node-8081] POST /reply -> http://localhost:8080 (code 200)
+[2025-11-25T19:50:02.692316100] [Lamport: 3] [node-8081] Requesting critical section, ts=3, peers=[http://localhost:8080]
+[2025-11-25T19:50:02.695313800] [Lamport: 3] [node-8081] Latch created with count=1
+[2025-11-25T19:50:02.695313800] [Lamport: 3] [node-8081] Sending /request to http://localhost:8080 url=http://localhost:8080/request
+[2025-11-25T19:50:02.718317400] [Lamport: 3] [node-8081] Received REPLY from http://localhost:8080
+[2025-11-25T19:50:02.719314200] [Lamport: 3] [node-8081] receiveReply from http://localhost:8080, latch=1
+[2025-11-25T19:50:02.719314200] [Lamport: 3] [node-8081] Latch after countDown = 0
+[2025-11-25T19:50:02.723312800] [Lamport: 3] [node-8081] POST /request -> http://localhost:8080 (code 200)
+[2025-11-25T19:50:02.725312700] [Lamport: 3] [node-8081] Entered critical section
+[2025-11-25T19:50:16.179160800] [Lamport: 3] [node-8081] Received REQUEST from http://localhost:8080 ts=5
+[2025-11-25T19:50:16.180168900] [Lamport: 6] [node-8081] Handling REQUEST from http://localhost:8080 ts=5, myTs=3, requesting=true, replyNow=false
+[2025-11-25T19:50:16.182157700] [Lamport: 6] [node-8081] Deferred reply to http://localhost:8080, deferred set=[http://localhost:8080]
+[2025-11-25T19:50:28.880150500] [Lamport: 6] [node-8081] Leaving critical section, sending deferred replies to: [http://localhost:8080]
+[2025-11-25T19:50:28.882119400] [Lamport: 6] [node-8081] Sending /reply to http://localhost:8080 url=http://localhost:8080/reply
+[2025-11-25T19:50:28.889127300] [Lamport: 6] [node-8081] POST /reply -> http://localhost:8080 (code 200)
