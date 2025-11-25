@@ -38,13 +38,27 @@ public class Main {
             String cmd = scanner.nextLine().trim();
 
             switch (cmd) {
+
                 case "enter":
-                    new Thread(ra::requestCS).start();
+                    new Thread(() -> {
+                        ra.requestCS();
+                        try {
+                            int old = shared.read();
+                            int newVal = old + 1;
+                            shared.write(newVal);
+
+                            node.getLogger().log("CRITICAL SECTION: shared variable " + old + " -> " + newVal);
+
+                            Thread.sleep(1000);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        } finally {
+                            ra.releaseCS();  // тут произойдёт SYNC broadcast
+                        }
+                    }).start();
                     break;
 
-                case "leave":
-                    new Thread(ra::releaseCS).start();
-                    break;
 
                 case "read":
                     System.out.println("Value = " + shared.read());
@@ -52,12 +66,34 @@ public class Main {
 
                 case "write":
                     System.out.print("New value: ");
-                    shared.write(Integer.parseInt(scanner.nextLine()));
+                    int newVal = Integer.parseInt(scanner.nextLine());
+
+                    new Thread(() -> {
+                        ra.requestCS();  // гарантируем, что пишем только в КС
+                        try {
+                            int old = shared.read();
+                            shared.write(newVal);
+
+                            node.getLogger().log(
+                                    "CRITICAL SECTION (MANUAL WRITE): " + old + " -> " + newVal
+                            );
+
+                            Thread.sleep(1000); // имитация работы
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        } finally {
+                            ra.releaseCS(); // тут произойдёт SYNC broadcast
+                        }
+                    }).start();
                     break;
 
+
+
                 default:
-                    System.out.println("Commands: enter, leave, read, write");
+                    System.out.println("Commands: enter, read, write");
             }
+
         }
     }
 }

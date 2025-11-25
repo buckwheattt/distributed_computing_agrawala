@@ -1,0 +1,215 @@
+[2025-11-25T22:12:24.448087200] [Lamport: 0] [node-8082] Node created at http://localhost:8082
+[2025-11-25T22:12:27.586941800] [Lamport: 0] [node-8082] New peer added: http://localhost:8083
+[2025-11-25T22:12:27.617918700] [Lamport: 0] [node-8082] New peer added: http://localhost:8084
+[2025-11-25T22:12:29.457163100] [Lamport: 0] [node-8082] Received REQUEST from http://localhost:8080 ts=1
+[2025-11-25T22:12:29.465154500] [Lamport: 2] [node-8082] Handling REQUEST from http://localhost:8080 ts=1, myTs=0, requesting=false, replyNow=true
+[2025-11-25T22:12:29.471157200] [Lamport: 2] [node-8082] Sending /reply to http://localhost:8080 url=http://localhost:8080/reply
+[2025-11-25T22:12:29.495154800] [Lamport: 2] [node-8082] POST /reply -> http://localhost:8080 (code 200)
+[2025-11-25T22:12:30.578562200] [Lamport: 2] [node-8082] SYNC: shared variable updated to 1 from http://localhost:8080
+[2025-11-25T22:12:31.280419600] [Lamport: 2] [node-8082] Received REQUEST from http://localhost:8081 ts=3
+[2025-11-25T22:12:31.280419600] [Lamport: 4] [node-8082] Handling REQUEST from http://localhost:8081 ts=3, myTs=0, requesting=false, replyNow=true
+[2025-11-25T22:12:31.281420300] [Lamport: 4] [node-8082] Sending /reply to http://localhost:8081 url=http://localhost:8081/reply
+[2025-11-25T22:12:31.285426200] [Lamport: 4] [node-8082] POST /reply -> http://localhost:8081 (code 200)
+[2025-11-25T22:12:32.315378300] [Lamport: 4] [node-8082] SYNC: shared variable updated to 2 from http://localhost:8081
+[2025-11-25T22:12:33.252820600] [Lamport: 5] [node-8082] Requesting critical section, ts=5, peers=[http://localhost:8084, http://localhost:8083, http://localhost:8080]
+[2025-11-25T22:12:33.255817] [Lamport: 5] [node-8082] Latch created with count=3
+[2025-11-25T22:12:33.256813700] [Lamport: 5] [node-8082] Sending /request to http://localhost:8084 url=http://localhost:8084/request
+[2025-11-25T22:12:33.262623] [Lamport: 5] [node-8082] Received REPLY from http://localhost:8084
+[2025-11-25T22:12:33.262623] [Lamport: 5] [node-8082] receiveReply from http://localhost:8084, latch=3
+[2025-11-25T22:12:33.262623] [Lamport: 5] [node-8082] Latch after countDown = 2
+[2025-11-25T22:12:33.262623] [Lamport: 5] [node-8082] POST /request -> http://localhost:8084 (code 200)
+[2025-11-25T22:12:33.262623] [Lamport: 5] [node-8082] Sending /request to http://localhost:8083 url=http://localhost:8083/request
+[2025-11-25T22:12:33.262623] [Lamport: 5] [node-8082] Received REPLY from http://localhost:8083
+[2025-11-25T22:12:33.262623] [Lamport: 5] [node-8082] receiveReply from http://localhost:8083, latch=2
+[2025-11-25T22:12:33.262623] [Lamport: 5] [node-8082] Latch after countDown = 1
+[2025-11-25T22:12:33.278243] [Lamport: 5] [node-8082] POST /request -> http://localhost:8083 (code 200)
+[2025-11-25T22:12:33.278243] [Lamport: 5] [node-8082] Sending /request to http://localhost:8080 url=http://localhost:8080/request
+[2025-11-25T22:12:33.278243] [Lamport: 5] [node-8082] Received REPLY from http://localhost:8080
+[2025-11-25T22:12:33.278243] [Lamport: 5] [node-8082] receiveReply from http://localhost:8080, latch=1
+[2025-11-25T22:12:33.278243] [Lamport: 5] [node-8082] Latch after countDown = 0
+[2025-11-25T22:12:33.294373] [Lamport: 5] [node-8082] POST /request -> http://localhost:8080 (code 200)
+[2025-11-25T22:12:33.296370800] [Lamport: 5] [node-8082] Entered critical section
+[2025-11-25T22:12:33.300381900] [Lamport: 5] [node-8082] CRITICAL SECTION (REST): shared variable 2 -> 3
+[2025-11-25T22:12:34.307264600] [Lamport: 5] [node-8082] Leaving critical section
+[2025-11-25T22:12:34.307264600] [Lamport: 5] [node-8082] Sending /syncSharedValue to http://localhost:8084 url=http://localhost:8084/syncSharedValue
+[2025-11-25T22:12:34.307264600] [Lamport: 5] [node-8082] POST /syncSharedValue -> http://localhost:8084 (code 200)
+[2025-11-25T22:12:34.307264600] [Lamport: 5] [node-8082] Sending /syncSharedValue to http://localhost:8083 url=http://localhost:8083/syncSharedValue
+[2025-11-25T22:12:34.307264600] [Lamport: 5] [node-8082] POST /syncSharedValue -> http://localhost:8083 (code 200)
+[2025-11-25T22:12:34.307264600] [Lamport: 5] [node-8082] Sending /syncSharedValue to http://localhost:8080 url=http://localhost:8080/syncSharedValue
+[2025-11-25T22:12:34.318625600] [Lamport: 5] [node-8082] POST /syncSharedValue -> http://localhost:8080 (code 200)
+[2025-11-25T22:12:34.318625600] [Lamport: 5] [node-8082] SYNC broadcast complete: val=3
+[2025-11-25T22:12:44.197256700] [Lamport: 5] [node-8082] Received REQUEST from http://localhost:8080 ts=11
+[2025-11-25T22:12:44.197256700] [Lamport: 12] [node-8082] Handling REQUEST from http://localhost:8080 ts=11, myTs=5, requesting=false, replyNow=true
+[2025-11-25T22:12:44.197256700] [Lamport: 12] [node-8082] Sending /reply to http://localhost:8080 url=http://localhost:8080/reply
+[2025-11-25T22:12:44.213029700] [Lamport: 12] [node-8082] POST /reply -> http://localhost:8080 (code 200)
+[2025-11-25T22:12:45.264655800] [Lamport: 12] [node-8082] SYNC: shared variable updated to 6 from http://localhost:8080
+[2025-11-25T22:12:45.290416200] [Lamport: 12] [node-8082] Received REQUEST from http://localhost:8081 ts=13
+[2025-11-25T22:12:45.290416200] [Lamport: 14] [node-8082] Handling REQUEST from http://localhost:8081 ts=13, myTs=5, requesting=false, replyNow=true
+[2025-11-25T22:12:45.290416200] [Lamport: 14] [node-8082] Sending /reply to http://localhost:8081 url=http://localhost:8081/reply
+[2025-11-25T22:12:45.290416200] [Lamport: 14] [node-8082] POST /reply -> http://localhost:8081 (code 200)
+[2025-11-25T22:12:46.158246500] [Lamport: 15] [node-8082] Requesting critical section, ts=15, peers=[http://localhost:8084, http://localhost:8083, http://localhost:8080]
+[2025-11-25T22:12:46.158246500] [Lamport: 15] [node-8082] Latch created with count=3
+[2025-11-25T22:12:46.161247200] [Lamport: 15] [node-8082] Sending /request to http://localhost:8084 url=http://localhost:8084/request
+[2025-11-25T22:12:46.165292500] [Lamport: 15] [node-8082] Received REPLY from http://localhost:8084
+[2025-11-25T22:12:46.165292500] [Lamport: 15] [node-8082] receiveReply from http://localhost:8084, latch=3
+[2025-11-25T22:12:46.165292500] [Lamport: 15] [node-8082] Latch after countDown = 2
+[2025-11-25T22:12:46.165292500] [Lamport: 15] [node-8082] POST /request -> http://localhost:8084 (code 200)
+[2025-11-25T22:12:46.165292500] [Lamport: 15] [node-8082] Sending /request to http://localhost:8083 url=http://localhost:8083/request
+[2025-11-25T22:12:46.180928700] [Lamport: 15] [node-8082] Received REPLY from http://localhost:8083
+[2025-11-25T22:12:46.180928700] [Lamport: 15] [node-8082] receiveReply from http://localhost:8083, latch=2
+[2025-11-25T22:12:46.180928700] [Lamport: 15] [node-8082] Latch after countDown = 1
+[2025-11-25T22:12:46.180928700] [Lamport: 15] [node-8082] POST /request -> http://localhost:8083 (code 200)
+[2025-11-25T22:12:46.180928700] [Lamport: 15] [node-8082] Sending /request to http://localhost:8080 url=http://localhost:8080/request
+[2025-11-25T22:12:46.197189300] [Lamport: 15] [node-8082] Received REPLY from http://localhost:8080
+[2025-11-25T22:12:46.198194400] [Lamport: 15] [node-8082] receiveReply from http://localhost:8080, latch=1
+[2025-11-25T22:12:46.198194400] [Lamport: 15] [node-8082] Latch after countDown = 0
+[2025-11-25T22:12:46.202189900] [Lamport: 15] [node-8082] POST /request -> http://localhost:8080 (code 200)
+[2025-11-25T22:12:46.203190100] [Lamport: 15] [node-8082] Entered critical section
+[2025-11-25T22:12:46.203190100] [Lamport: 15] [node-8082] CRITICAL SECTION (REST): shared variable 6 -> 7
+[2025-11-25T22:12:46.316635900] [Lamport: 15] [node-8082] SYNC: shared variable updated to 7 from http://localhost:8081
+[2025-11-25T22:12:47.212573300] [Lamport: 15] [node-8082] Leaving critical section
+[2025-11-25T22:12:47.212573300] [Lamport: 15] [node-8082] Sending /syncSharedValue to http://localhost:8084 url=http://localhost:8084/syncSharedValue
+[2025-11-25T22:12:47.212573300] [Lamport: 15] [node-8082] POST /syncSharedValue -> http://localhost:8084 (code 200)
+[2025-11-25T22:12:47.212573300] [Lamport: 15] [node-8082] Sending /syncSharedValue to http://localhost:8083 url=http://localhost:8083/syncSharedValue
+[2025-11-25T22:12:47.212573300] [Lamport: 15] [node-8082] POST /syncSharedValue -> http://localhost:8083 (code 200)
+[2025-11-25T22:12:47.212573300] [Lamport: 15] [node-8082] Sending /syncSharedValue to http://localhost:8080 url=http://localhost:8080/syncSharedValue
+[2025-11-25T22:12:47.232504600] [Lamport: 15] [node-8082] POST /syncSharedValue -> http://localhost:8080 (code 200)
+[2025-11-25T22:12:47.233501400] [Lamport: 15] [node-8082] SYNC broadcast complete: val=7
+[2025-11-25T22:13:02.279113100] [Lamport: 15] [node-8082] Received REQUEST from http://localhost:8080 ts=17
+[2025-11-25T22:13:02.279113100] [Lamport: 18] [node-8082] Handling REQUEST from http://localhost:8080 ts=17, myTs=15, requesting=false, replyNow=true
+[2025-11-25T22:13:02.281105800] [Lamport: 18] [node-8082] Sending /reply to http://localhost:8080 url=http://localhost:8080/reply
+[2025-11-25T22:13:02.286104200] [Lamport: 18] [node-8082] POST /reply -> http://localhost:8080 (code 200)
+[2025-11-25T22:13:03.321993] [Lamport: 18] [node-8082] SYNC: shared variable updated to 8 from http://localhost:8080
+[2025-11-25T22:13:09.279246100] [Lamport: 18] [node-8082] Received REQUEST from http://localhost:8083 ts=19
+[2025-11-25T22:13:09.279246100] [Lamport: 20] [node-8082] Handling REQUEST from http://localhost:8083 ts=19, myTs=15, requesting=false, replyNow=true
+[2025-11-25T22:13:09.279246100] [Lamport: 20] [node-8082] Sending /reply to http://localhost:8083 url=http://localhost:8083/reply
+[2025-11-25T22:13:09.279246100] [Lamport: 20] [node-8082] POST /reply -> http://localhost:8083 (code 200)
+[2025-11-25T22:13:10.327820400] [Lamport: 20] [node-8082] SYNC: shared variable updated to 9 from http://localhost:8083
+[2025-11-25T22:13:25.475373600] [Lamport: 20] [node-8082] Received REQUEST from http://localhost:8080 ts=21
+[2025-11-25T22:13:25.475373600] [Lamport: 22] [node-8082] Handling REQUEST from http://localhost:8080 ts=21, myTs=15, requesting=false, replyNow=true
+[2025-11-25T22:13:25.475373600] [Lamport: 22] [node-8082] Sending /reply to http://localhost:8080 url=http://localhost:8080/reply
+[2025-11-25T22:13:25.475373600] [Lamport: 22] [node-8082] POST /reply -> http://localhost:8080 (code 200)
+[2025-11-25T22:13:26.520549200] [Lamport: 22] [node-8082] SYNC: shared variable updated to 10 from http://localhost:8080
+[2025-11-25T22:13:42.180491100] [Lamport: 22] [node-8082] Received REQUEST from http://localhost:8081 ts=23
+[2025-11-25T22:13:42.181674] [Lamport: 24] [node-8082] Handling REQUEST from http://localhost:8081 ts=23, myTs=15, requesting=false, replyNow=true
+[2025-11-25T22:13:42.184705800] [Lamport: 24] [node-8082] Sending /reply to http://localhost:8081 url=http://localhost:8081/reply
+[2025-11-25T22:13:42.191706] [Lamport: 24] [node-8082] POST /reply -> http://localhost:8081 (code 200)
+[2025-11-25T22:13:43.221165700] [Lamport: 24] [node-8082] SYNC: shared variable updated to 11 from http://localhost:8081
+[2025-11-25T22:13:56.056469400] [Lamport: 25] [node-8082] Requesting critical section, ts=25, peers=[http://localhost:8084, http://localhost:8083, http://localhost:8080]
+[2025-11-25T22:13:56.056469400] [Lamport: 25] [node-8082] Latch created with count=3
+[2025-11-25T22:13:56.056469400] [Lamport: 25] [node-8082] Sending /request to http://localhost:8084 url=http://localhost:8084/request
+[2025-11-25T22:13:56.080088800] [Lamport: 25] [node-8082] Received REPLY from http://localhost:8084
+[2025-11-25T22:13:56.080088800] [Lamport: 25] [node-8082] receiveReply from http://localhost:8084, latch=3
+[2025-11-25T22:13:56.080088800] [Lamport: 25] [node-8082] Latch after countDown = 2
+[2025-11-25T22:13:56.083097100] [Lamport: 25] [node-8082] POST /request -> http://localhost:8084 (code 200)
+[2025-11-25T22:13:56.084088600] [Lamport: 25] [node-8082] Sending /request to http://localhost:8083 url=http://localhost:8083/request
+[2025-11-25T22:13:56.088179600] [Lamport: 25] [node-8082] Received REPLY from http://localhost:8083
+[2025-11-25T22:13:56.088179600] [Lamport: 25] [node-8082] receiveReply from http://localhost:8083, latch=2
+[2025-11-25T22:13:56.088179600] [Lamport: 25] [node-8082] Latch after countDown = 1
+[2025-11-25T22:13:56.088179600] [Lamport: 25] [node-8082] POST /request -> http://localhost:8083 (code 200)
+[2025-11-25T22:13:56.088179600] [Lamport: 25] [node-8082] Sending /request to http://localhost:8080 url=http://localhost:8080/request
+[2025-11-25T22:13:56.103837] [Lamport: 25] [node-8082] Received REPLY from http://localhost:8080
+[2025-11-25T22:13:56.103837] [Lamport: 25] [node-8082] receiveReply from http://localhost:8080, latch=1
+[2025-11-25T22:13:56.103837] [Lamport: 25] [node-8082] Latch after countDown = 0
+[2025-11-25T22:13:56.111339700] [Lamport: 25] [node-8082] POST /request -> http://localhost:8080 (code 200)
+[2025-11-25T22:13:56.111339700] [Lamport: 25] [node-8082] Entered critical section
+[2025-11-25T22:13:56.111339700] [Lamport: 25] [node-8082] CRITICAL SECTION: shared variable 11 -> 12
+[2025-11-25T22:13:57.135281600] [Lamport: 25] [node-8082] Leaving critical section
+[2025-11-25T22:13:57.135281600] [Lamport: 25] [node-8082] Sending /syncSharedValue to http://localhost:8084 url=http://localhost:8084/syncSharedValue
+[2025-11-25T22:13:57.135281600] [Lamport: 25] [node-8082] POST /syncSharedValue -> http://localhost:8084 (code 200)
+[2025-11-25T22:13:57.135281600] [Lamport: 25] [node-8082] Sending /syncSharedValue to http://localhost:8083 url=http://localhost:8083/syncSharedValue
+[2025-11-25T22:13:57.154029600] [Lamport: 25] [node-8082] POST /syncSharedValue -> http://localhost:8083 (code 200)
+[2025-11-25T22:13:57.156010400] [Lamport: 25] [node-8082] Sending /syncSharedValue to http://localhost:8080 url=http://localhost:8080/syncSharedValue
+[2025-11-25T22:13:57.160018900] [Lamport: 25] [node-8082] POST /syncSharedValue -> http://localhost:8080 (code 200)
+[2025-11-25T22:13:57.161018] [Lamport: 25] [node-8082] SYNC broadcast complete: val=12
+[2025-11-25T22:14:13.071511500] [Lamport: 26] [node-8082] Requesting critical section, ts=26, peers=[http://localhost:8084, http://localhost:8083, http://localhost:8080]
+[2025-11-25T22:14:13.071511500] [Lamport: 26] [node-8082] Latch created with count=3
+[2025-11-25T22:14:13.071511500] [Lamport: 26] [node-8082] Sending /request to http://localhost:8084 url=http://localhost:8084/request
+[2025-11-25T22:14:13.087138300] [Lamport: 26] [node-8082] Received REPLY from http://localhost:8084
+[2025-11-25T22:14:13.087138300] [Lamport: 26] [node-8082] receiveReply from http://localhost:8084, latch=3
+[2025-11-25T22:14:13.087138300] [Lamport: 26] [node-8082] Latch after countDown = 2
+[2025-11-25T22:14:13.087138300] [Lamport: 26] [node-8082] POST /request -> http://localhost:8084 (code 200)
+[2025-11-25T22:14:13.087138300] [Lamport: 26] [node-8082] Sending /request to http://localhost:8083 url=http://localhost:8083/request
+[2025-11-25T22:14:13.087138300] [Lamport: 26] [node-8082] Received REPLY from http://localhost:8083
+[2025-11-25T22:14:13.087138300] [Lamport: 26] [node-8082] receiveReply from http://localhost:8083, latch=2
+[2025-11-25T22:14:13.087138300] [Lamport: 26] [node-8082] Latch after countDown = 1
+[2025-11-25T22:14:13.102736500] [Lamport: 26] [node-8082] POST /request -> http://localhost:8083 (code 200)
+[2025-11-25T22:14:13.102736500] [Lamport: 26] [node-8082] Sending /request to http://localhost:8080 url=http://localhost:8080/request
+[2025-11-25T22:14:13.102736500] [Lamport: 26] [node-8082] Received REPLY from http://localhost:8080
+[2025-11-25T22:14:13.102736500] [Lamport: 26] [node-8082] receiveReply from http://localhost:8080, latch=1
+[2025-11-25T22:14:13.119579500] [Lamport: 26] [node-8082] Latch after countDown = 0
+[2025-11-25T22:14:13.123562200] [Lamport: 26] [node-8082] POST /request -> http://localhost:8080 (code 200)
+[2025-11-25T22:14:13.124550700] [Lamport: 26] [node-8082] Entered critical section
+[2025-11-25T22:14:13.124550700] [Lamport: 26] [node-8082] CRITICAL SECTION (MANUAL WRITE): 12 -> 15
+[2025-11-25T22:14:14.133968400] [Lamport: 26] [node-8082] Leaving critical section
+[2025-11-25T22:14:14.136192700] [Lamport: 26] [node-8082] Sending /syncSharedValue to http://localhost:8084 url=http://localhost:8084/syncSharedValue
+[2025-11-25T22:14:14.142173200] [Lamport: 26] [node-8082] POST /syncSharedValue -> http://localhost:8084 (code 200)
+[2025-11-25T22:14:14.143172100] [Lamport: 26] [node-8082] Sending /syncSharedValue to http://localhost:8083 url=http://localhost:8083/syncSharedValue
+[2025-11-25T22:14:14.147173400] [Lamport: 26] [node-8082] POST /syncSharedValue -> http://localhost:8083 (code 200)
+[2025-11-25T22:14:14.148169600] [Lamport: 26] [node-8082] Sending /syncSharedValue to http://localhost:8080 url=http://localhost:8080/syncSharedValue
+[2025-11-25T22:14:14.149391700] [Lamport: 26] [node-8082] POST /syncSharedValue -> http://localhost:8080 (code 200)
+[2025-11-25T22:14:14.149391700] [Lamport: 26] [node-8082] SYNC broadcast complete: val=15
+[2025-11-25T22:14:33.578669] [Lamport: 27] [node-8082] Requesting critical section, ts=27, peers=[http://localhost:8084, http://localhost:8083, http://localhost:8080]
+[2025-11-25T22:14:33.578669] [Lamport: 27] [node-8082] Latch created with count=3
+[2025-11-25T22:14:33.578669] [Lamport: 27] [node-8082] Sending /request to http://localhost:8084 url=http://localhost:8084/request
+[2025-11-25T22:14:33.594463900] [Lamport: 27] [node-8082] Received REPLY from http://localhost:8084
+[2025-11-25T22:14:33.594463900] [Lamport: 27] [node-8082] receiveReply from http://localhost:8084, latch=3
+[2025-11-25T22:14:33.594463900] [Lamport: 27] [node-8082] Latch after countDown = 2
+[2025-11-25T22:14:33.594463900] [Lamport: 27] [node-8082] POST /request -> http://localhost:8084 (code 200)
+[2025-11-25T22:14:33.594463900] [Lamport: 27] [node-8082] Sending /request to http://localhost:8083 url=http://localhost:8083/request
+[2025-11-25T22:14:33.594463900] [Lamport: 27] [node-8082] Received REPLY from http://localhost:8083
+[2025-11-25T22:14:33.594463900] [Lamport: 27] [node-8082] receiveReply from http://localhost:8083, latch=2
+[2025-11-25T22:14:33.610104900] [Lamport: 27] [node-8082] Latch after countDown = 1
+[2025-11-25T22:14:33.616279600] [Lamport: 27] [node-8082] POST /request -> http://localhost:8083 (code 200)
+[2025-11-25T22:14:33.617275200] [Lamport: 27] [node-8082] Sending /request to http://localhost:8080 url=http://localhost:8080/request
+[2025-11-25T22:14:33.618407200] [Lamport: 27] [node-8082] Received REPLY from http://localhost:8080
+[2025-11-25T22:14:33.618407200] [Lamport: 27] [node-8082] receiveReply from http://localhost:8080, latch=1
+[2025-11-25T22:14:33.618407200] [Lamport: 27] [node-8082] Latch after countDown = 0
+[2025-11-25T22:14:33.618407200] [Lamport: 27] [node-8082] POST /request -> http://localhost:8080 (code 200)
+[2025-11-25T22:14:33.618407200] [Lamport: 27] [node-8082] Entered critical section
+[2025-11-25T22:14:33.618407200] [Lamport: 27] [node-8082] CRITICAL SECTION: shared variable 15 -> 16
+[2025-11-25T22:14:34.631390200] [Lamport: 27] [node-8082] Leaving critical section
+[2025-11-25T22:14:34.631390200] [Lamport: 27] [node-8082] Sending /syncSharedValue to http://localhost:8084 url=http://localhost:8084/syncSharedValue
+[2025-11-25T22:14:34.631390200] [Lamport: 27] [node-8082] POST /syncSharedValue -> http://localhost:8084 (code 200)
+[2025-11-25T22:14:34.631390200] [Lamport: 27] [node-8082] Sending /syncSharedValue to http://localhost:8083 url=http://localhost:8083/syncSharedValue
+[2025-11-25T22:14:34.631390200] [Lamport: 27] [node-8082] POST /syncSharedValue -> http://localhost:8083 (code 200)
+[2025-11-25T22:14:34.631390200] [Lamport: 27] [node-8082] Sending /syncSharedValue to http://localhost:8080 url=http://localhost:8080/syncSharedValue
+[2025-11-25T22:14:34.647021600] [Lamport: 27] [node-8082] POST /syncSharedValue -> http://localhost:8080 (code 200)
+[2025-11-25T22:14:34.647021600] [Lamport: 27] [node-8082] SYNC broadcast complete: val=16
+[2025-11-25T22:14:48.657641100] [Lamport: 27] [node-8082] Received REQUEST from http://localhost:8081 ts=24
+[2025-11-25T22:14:48.657641100] [Lamport: 28] [node-8082] Handling REQUEST from http://localhost:8081 ts=24, myTs=27, requesting=false, replyNow=true
+[2025-11-25T22:14:48.657641100] [Lamport: 28] [node-8082] Sending /reply to http://localhost:8081 url=http://localhost:8081/reply
+[2025-11-25T22:14:48.657641100] [Lamport: 28] [node-8082] POST /reply -> http://localhost:8081 (code 200)
+[2025-11-25T22:14:49.725670500] [Lamport: 28] [node-8082] SYNC: shared variable updated to 12 from http://localhost:8081
+[2025-11-25T22:16:14.025817600] [Lamport: 29] [node-8082] Requesting critical section, ts=29, peers=[http://localhost:8084, http://localhost:8083, http://localhost:8080]
+[2025-11-25T22:16:14.025817600] [Lamport: 29] [node-8082] Latch created with count=3
+[2025-11-25T22:16:14.025817600] [Lamport: 29] [node-8082] Sending /request to http://localhost:8084 url=http://localhost:8084/request
+[2025-11-25T22:16:14.042270400] [Lamport: 29] [node-8082] Received REPLY from http://localhost:8084
+[2025-11-25T22:16:14.043271900] [Lamport: 29] [node-8082] receiveReply from http://localhost:8084, latch=3
+[2025-11-25T22:16:14.044283200] [Lamport: 29] [node-8082] Latch after countDown = 2
+[2025-11-25T22:16:14.047304100] [Lamport: 29] [node-8082] POST /request -> http://localhost:8084 (code 200)
+[2025-11-25T22:16:14.048305500] [Lamport: 29] [node-8082] Sending /request to http://localhost:8083 url=http://localhost:8083/request
+[2025-11-25T22:16:14.055483500] [Lamport: 29] [node-8082] Received REPLY from http://localhost:8083
+[2025-11-25T22:16:14.055483500] [Lamport: 29] [node-8082] receiveReply from http://localhost:8083, latch=2
+[2025-11-25T22:16:14.055483500] [Lamport: 29] [node-8082] Latch after countDown = 1
+[2025-11-25T22:16:14.055483500] [Lamport: 29] [node-8082] POST /request -> http://localhost:8083 (code 200)
+[2025-11-25T22:16:14.055483500] [Lamport: 29] [node-8082] Sending /request to http://localhost:8080 url=http://localhost:8080/request
+[2025-11-25T22:16:14.055483500] [Lamport: 29] [node-8082] Received REPLY from http://localhost:8080
+[2025-11-25T22:16:14.055483500] [Lamport: 29] [node-8082] receiveReply from http://localhost:8080, latch=1
+[2025-11-25T22:16:14.055483500] [Lamport: 29] [node-8082] Latch after countDown = 0
+[2025-11-25T22:16:14.071105200] [Lamport: 29] [node-8082] POST /request -> http://localhost:8080 (code 200)
+[2025-11-25T22:16:14.071105200] [Lamport: 29] [node-8082] Entered critical section
+[2025-11-25T22:16:14.071105200] [Lamport: 29] [node-8082] CRITICAL SECTION: shared variable 12 -> 13
+[2025-11-25T22:16:15.078455200] [Lamport: 29] [node-8082] Leaving critical section
+[2025-11-25T22:16:15.079079500] [Lamport: 29] [node-8082] Sending /syncSharedValue to http://localhost:8084 url=http://localhost:8084/syncSharedValue
+[2025-11-25T22:16:15.087253] [Lamport: 29] [node-8082] POST /syncSharedValue -> http://localhost:8084 (code 200)
+[2025-11-25T22:16:15.087253] [Lamport: 29] [node-8082] Sending /syncSharedValue to http://localhost:8083 url=http://localhost:8083/syncSharedValue
+[2025-11-25T22:16:15.087253] [Lamport: 29] [node-8082] POST /syncSharedValue -> http://localhost:8083 (code 200)
+[2025-11-25T22:16:15.087253] [Lamport: 29] [node-8082] Sending /syncSharedValue to http://localhost:8080 url=http://localhost:8080/syncSharedValue
+[2025-11-25T22:16:15.087253] [Lamport: 29] [node-8082] POST /syncSharedValue -> http://localhost:8080 (code 200)
+[2025-11-25T22:16:15.087253] [Lamport: 29] [node-8082] SYNC broadcast complete: val=13
+[2025-11-25T22:16:57.644309700] [Lamport: 29] [node-8082] Received REQUEST from http://localhost:8081 ts=25
+[2025-11-25T22:16:57.645313200] [Lamport: 30] [node-8082] Handling REQUEST from http://localhost:8081 ts=25, myTs=29, requesting=false, replyNow=true
+[2025-11-25T22:16:57.647316400] [Lamport: 30] [node-8082] Sending /reply to http://localhost:8081 url=http://localhost:8081/reply
+[2025-11-25T22:16:57.649558200] [Lamport: 30] [node-8082] POST /reply -> http://localhost:8081 (code 200)
+[2025-11-25T22:16:58.682035400] [Lamport: 30] [node-8082] SYNC: shared variable updated to 13 from http://localhost:8081

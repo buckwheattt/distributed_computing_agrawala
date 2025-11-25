@@ -79,24 +79,46 @@ public class RicartAgrawala {
     }
 
     // Выход из КС
-    public synchronized void releaseCS() {
-        if (!node.isInCriticalSection()) {
-            node.getLogger().log("releaseCS() called but not in critical section.");
-            requesting = false;
-            latch = null;
-            return;
-        }
+//    public synchronized void releaseCS() {
+//        if (!node.isInCriticalSection()) {
+//            node.getLogger().log("releaseCS() called but not in critical section.");
+//            requesting = false;
+//            latch = null;
+//            return;
+//        }
+//
+//        node.setInCriticalSection(false);
+//        requesting = false;
+//        node.getLogger().log("Leaving critical section, sending deferred replies to: " + deferredReplies);
+//
+//        for (String peerUrl : deferredReplies) {
+//            new Thread(() -> RestClient.post(peerUrl, "/reply", "", node)).start();
+//        }
+//        deferredReplies.clear();
+//        latch = null;
+//    }
 
+    public synchronized void releaseCS() {
         node.setInCriticalSection(false);
         requesting = false;
-        node.getLogger().log("Leaving critical section, sending deferred replies to: " + deferredReplies);
 
+        node.getLogger().log("Leaving critical section");
+
+        // 1. Сначала отправляем deferred replies
         for (String peerUrl : deferredReplies) {
-            new Thread(() -> RestClient.post(peerUrl, "/reply", "", node)).start();
+            RestClient.post(peerUrl, "/reply", "", node);
         }
         deferredReplies.clear();
-        latch = null;
+
+        // 2. Теперь — распространяем shared variable
+        int val = node.getSharedVariable().read();
+        for (String peer : node.getPeers()) {
+            RestClient.post(peer, "/syncSharedValue", String.valueOf(val), node);
+        }
+
+        node.getLogger().log("SYNC broadcast complete: val=" + val);
     }
+
 
     // Входящий /request
     public synchronized void receiveRequest(String senderUrl, int ts) {

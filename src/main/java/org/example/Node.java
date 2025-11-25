@@ -60,6 +60,14 @@ public class Node {
             logger.log("Peer already known: " + url);
         }
     }
+    public void broadcastSharedVariable() {
+        int val = shared.read();
+        for (String peer : peers) {
+            RestClient.post(peer, "/syncSharedValue", String.valueOf(val), this);
+        }
+        logger.log("SYNC broadcast (manual or RA): value=" + val);
+    }
+
 
 
 

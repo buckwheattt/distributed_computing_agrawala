@@ -23,11 +23,21 @@ public class RestClient {
             conn.setRequestProperty("Content-Type", "text/plain");
 
             String fullBody;
+
             if ("/request".equals(endpoint)) {
-                fullBody = node.getAddress() + ";" + body; // url;timestamp
+                // REQUEST: url;timestamp
+                fullBody = node.getAddress() + ";" + body;
+
             } else if ("/reply".equals(endpoint)) {
-                fullBody = node.getAddress();              // только url
+                // REPLY: только url
+                fullBody = node.getAddress();
+
+            } else if ("/syncSharedValue".equals(endpoint)) {
+                // 🔥 FIX: SYNC MUST BE url;value
+                fullBody = node.getAddress() + ";" + body;
+
             } else {
+                // все остальные эндпоинты (join, kill, revive, setDelay)
                 fullBody = body == null ? "" : body;
             }
 
@@ -43,5 +53,6 @@ public class RestClient {
             node.getLogger().log("POST error to " + peerUrl + endpoint + ": " + e.getMessage());
         }
     }
+
 }
 

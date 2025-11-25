@@ -33,10 +33,57 @@ public class RestServer {
             return "OK";
         });
 
+//        post("/enterCS", (req, res) -> {
+//            new Thread(() -> {
+//                ra.requestCS();
+//                try {
+//                    SharedVariable sv = node.getSharedVariable();
+//                    int old = sv.read();
+//                    int newVal = old + 1;
+//                    sv.write(newVal);
+//
+//                    node.getLogger().log("CRITICAL SECTION (REST): " + old + " -> " + newVal);
+//
+//                    Thread.sleep(1000);
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                } finally {
+//                    ra.releaseCS();
+//                }
+//            }).start();
+//
+//            return "Executed critical section";
+//        });
         post("/enterCS", (req, res) -> {
-            new Thread(ra::requestCS).start();
-            return "Request for entering CS sent";
+            new Thread(() -> {
+                ra.requestCS();  // вход по RA
+
+                try {
+                    SharedVariable sv = node.getSharedVariable();
+
+                    int old = sv.read();
+                    int newVal = old + 1;
+                    sv.write(newVal);
+
+                    node.getLogger().log(
+                            "CRITICAL SECTION (REST): shared variable " + old + " -> " + newVal
+                    );
+
+                    Thread.sleep(1000);  // имитация работы
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ra.releaseCS();  // <-- ЗДЕСЬ ВЫЗЫВАЕТСЯ SYNC BROADCAST
+                }
+
+            }).start();
+
+            return "OK";
         });
+
+
 
         post("/leaveCS", (req, res) -> {
             new Thread(ra::releaseCS).start();
@@ -48,6 +95,20 @@ public class RestServer {
             node.addPeer(peerUrl);
             return "Peer added";
         });
+
+        post("/syncSharedValue", (req, res) -> {
+            String body = req.body(); // формат: "<sender-url>;<value>"
+            String[] parts = body.split(";");
+            int value = Integer.parseInt(parts[1]);
+
+            node.getSharedVariable().write(value);
+            node.getLogger().log("SYNC: shared variable updated to " + value +
+                    " from " + parts[0]);
+
+            return "OK";
+        });
+
+
 
         get("/ping", (req, res) -> "OK");
     }
