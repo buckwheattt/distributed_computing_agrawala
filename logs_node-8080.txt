@@ -1,0 +1,130 @@
+[2025-11-24T23:57:35.238782800] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T00:01:00.185124400] [Lamport: 0] [node-8080] Установлена задержка 1000 мс
+[2025-11-25T00:02:00.173201200] [Lamport: 1] [node-8080] Запрашивает критическую секцию
+[2025-11-25T00:02:01.207973600] [Lamport: 1] [node-8080] Ошибка при POST на /request: no protocol: /request
+[2025-11-25T00:02:15.519943] [Lamport: 2] [node-8080] Запрашивает критическую секцию
+[2025-11-25T00:02:16.523313600] [Lamport: 2] [node-8080] Ошибка при POST на /request: no protocol: /request
+[2025-11-25T15:26:55.873685600] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T15:29:09.005841400] [Lamport: 0] [node-8080] Установлена задержка 1000 мс
+[2025-11-25T15:29:18.682113800] [Lamport: 1] [node-8080] Запрашивает критическую секцию
+[2025-11-25T15:29:19.708362200] [Lamport: 1] [node-8080] Ошибка при POST на /request: no protocol: /request
+[2025-11-25T15:35:46.680699] [Lamport: 2] [node-8080] Запрашивает критическую секцию
+[2025-11-25T15:35:47.694623200] [Lamport: 2] [node-8080] Ошибка при POST на /request: no protocol: /request
+[2025-11-25T15:36:09.261967100] [Lamport: 3] [node-8080] Ошибка при POST на 127.0.0.1:8080/reply: no protocol: 127.0.0.1:8080/reply
+[2025-11-25T15:37:16.739289300] [Lamport: 3] [node-8080] Выходит из критической секции
+[2025-11-25T15:37:47.861183100] [Lamport: 4] [node-8080] Ошибка при POST на 127.0.0.1:8080/reply: no protocol: 127.0.0.1:8080/reply
+[2025-11-25T15:42:18.030276500] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T15:43:08.936893300] [Lamport: 1] [node-8080] Запрашивает критическую секцию
+[2025-11-25T15:43:08.969898200] [Lamport: 1] [node-8080] Ошибка при POST на /request: no protocol: /request
+[2025-11-25T15:43:17.244040400] [Lamport: 2] [node-8080] Ошибка при POST на 127.0.0.1:8080/reply: no protocol: 127.0.0.1:8080/reply
+[2025-11-25T15:43:23.731213800] [Lamport: 2] [node-8080] Выходит из критической секции
+[2025-11-25T15:43:28.728492400] [Lamport: 3] [node-8080] Ошибка при POST на 127.0.0.1:8080/reply: no protocol: 127.0.0.1:8080/reply
+[2025-11-25T15:46:57.512862700] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T15:48:45.368286300] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T15:49:20.655618700] [Lamport: 1] [node-8080] Запрашивает критическую секцию
+[2025-11-25T15:49:20.657610400] [Lamport: 1] [node-8080] Вошёл в критическую секцию
+[2025-11-25T15:49:26.421206600] [Lamport: 2] [node-8080] Ошибка при POST на 127.0.0.1:8080/reply: no protocol: 127.0.0.1:8080/reply
+[2025-11-25T15:49:33.204074200] [Lamport: 2] [node-8080] Выходит из критической секции
+[2025-11-25T15:49:36.284541200] [Lamport: 3] [node-8080] Ошибка при POST на 127.0.0.1:8080/reply: no protocol: 127.0.0.1:8080/reply
+[2025-11-25T15:55:28.806925] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T15:56:02.803734500] [Lamport: 1] [node-8080] Запрашивает критическую секцию
+[2025-11-25T15:56:02.805735100] [Lamport: 1] [node-8080] Вошёл в критическую секцию
+[2025-11-25T15:56:07.856898900] [Lamport: 2] [node-8080] Ошибка при POST на 127.0.0.1:8080/reply: no protocol: 127.0.0.1:8080/reply
+[2025-11-25T15:56:12.774616600] [Lamport: 2] [node-8080] Выходит из критической секции
+[2025-11-25T15:56:14.792432600] [Lamport: 3] [node-8080] Ошибка при POST на 127.0.0.1:8080/reply: no protocol: 127.0.0.1:8080/reply
+[2025-11-25T16:04:29.165272] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T16:04:42.878626900] [Lamport: 1] [node-8080] Запрашивает критическую секцию
+[2025-11-25T16:04:42.879626100] [Lamport: 1] [node-8080] Вошёл в критическую секцию
+[2025-11-25T16:14:27.090485200] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T16:14:46.934424500] [Lamport: 1] [node-8080] Запрашивает критическую секцию
+[2025-11-25T16:14:46.935408900] [Lamport: 1] [node-8080] Вошёл в критическую секцию
+[2025-11-25T16:17:38.693255900] [Lamport: 3] [node-8080] Запрашивает критическую секцию
+[2025-11-25T16:17:38.693255900] [Lamport: 3] [node-8080] Вошёл в критическую секцию
+[2025-11-25T16:17:42.974605] [Lamport: 3] [node-8080] Выходит из критической секции
+[2025-11-25T16:17:47.419007100] [Lamport: 4] [node-8080] Запрашивает критическую секцию
+[2025-11-25T16:17:47.420022900] [Lamport: 4] [node-8080] Вошёл в критическую секцию
+[2025-11-25T16:18:06.765907700] [Lamport: 4] [node-8080] Выходит из критической секции
+[2025-11-25T16:23:13.586396100] [Lamport: 4] [node-8080] Добавлен новый peer: http://localhost:8081
+[2025-11-25T16:23:13.587395700] [Lamport: 4] [node-8080] Peer joined: http://localhost:8081
+[2025-11-25T16:23:34.180643800] [Lamport: 5] [node-8080] Запрашивает критическую секцию
+[2025-11-25T16:24:10.491345] [Lamport: 5] [node-8080] Ошибка при POST на http://localhost:8081/request: Connection refused: connect
+[2025-11-25T16:24:10.491345] [Lamport: 5] [node-8080] Выходит из критической секции
+[2025-11-25T16:24:10.497673800] [Lamport: 6] [node-8080] Запрашивает критическую секцию
+[2025-11-25T16:24:10.498684700] [Lamport: 6] [node-8080] Ошибка при POST на http://localhost:8081/request: Connection refused: connect
+[2025-11-25T16:24:52.570413500] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T16:25:19.222538900] [Lamport: 3] [node-8080] Запрашивает критическую секцию
+[2025-11-25T16:26:11.983184300] [Lamport: 3] [node-8080] Ошибка при POST на http://localhost:8081/request: Connection refused: connect
+[2025-11-25T16:26:11.984183500] [Lamport: 3] [node-8080] Выходит из критической секции
+[2025-11-25T16:26:31.994337] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T16:26:45.072968700] [Lamport: 0] [node-8080] Добавлен новый peer: http://localhost:8081
+[2025-11-25T16:26:45.073973300] [Lamport: 0] [node-8080] Peer joined: http://localhost:8081
+[2025-11-25T16:27:05.056761800] [Lamport: 1] [node-8080] Запрашивает критическую секцию
+[2025-11-25T16:29:45.967142100] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T16:30:28.864505200] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T16:30:53.684678700] [Lamport: 1] [node-8080] Запрашивает критическую секцию
+[2025-11-25T16:35:47.636561600] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T16:41:09.257605500] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T16:41:27.525743700] [Lamport: 0] [node-8080] Добавлен новый peer: http://localhost:8081
+[2025-11-25T16:41:27.526745500] [Lamport: 0] [node-8080] Peer joined: http://localhost:8081
+[2025-11-25T16:42:06.816577800] [Lamport: 3] [node-8080] Запрашивает критическую секцию
+[2025-11-25T16:42:34.556495900] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T16:42:40.658306500] [Lamport: 1] [node-8080] Запрашивает критическую секцию
+[2025-11-25T16:46:06.679242300] [Lamport: 1] [node-8080] Ошибка при POST на http://localhost:8081/request: Connection refused: connect
+[2025-11-25T16:46:21.623769800] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T16:46:34.611914] [Lamport: 0] [node-8080] Добавлен новый peer: http://localhost:8081
+[2025-11-25T16:46:34.612902600] [Lamport: 0] [node-8080] Peer joined: http://localhost:8081
+[2025-11-25T16:46:57.051896800] [Lamport: 1] [node-8080] Запрашивает критическую секцию
+[2025-11-25T16:54:18.057102800] [Lamport: 1] [node-8080] Ошибка при POST на http://localhost:8081/request: Connection refused: connect
+[2025-11-25T16:54:43.976873] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T16:54:59.171506800] [Lamport: 0] [node-8080] Добавлен новый peer: http://localhost:8081
+[2025-11-25T16:54:59.172506100] [Lamport: 0] [node-8080] Peer joined: http://localhost:8081
+[2025-11-25T16:55:20.644675600] [Lamport: 1] [node-8080] Запрашивает критическую секцию
+[2025-11-25T16:55:20.775996400] [Lamport: 1] [node-8080] POST /request to http://localhost:8081 (code 500)
+[2025-11-25T17:01:19.706246600] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T17:01:32.014206600] [Lamport: 0] [node-8080] Добавлен новый peer: http://localhost:8081
+[2025-11-25T17:01:32.014206600] [Lamport: 0] [node-8080] Peer joined: http://localhost:8081
+[2025-11-25T17:01:52.192888200] [Lamport: 1] [node-8080] Запрашивает критическую секцию
+[2025-11-25T17:18:06.776519] [Lamport: 0] [node-8080] Узел создан на порту 8080
+[2025-11-25T17:18:25.953985300] [Lamport: 0] [node-8080] Добавлен новый peer: http://localhost:8081
+[2025-11-25T17:18:25.953985300] [Lamport: 0] [node-8080] Peer joined: http://localhost:8081
+[2025-11-25T17:18:40.453653400] [Lamport: 1] [node-8080] Запрашивает критическую секцию
+[2025-11-25T17:18:40.585177900] [Lamport: 1] [node-8080] POST /request to node-8081 (code 200)
+[2025-11-25T18:27:53.754031100] [Lamport: 0] [node-8080] Node created at http://localhost:8080
+[2025-11-25T18:28:05.060532900] [Lamport: 0] [node-8080] New peer added: http://localhost:8081
+[2025-11-25T18:28:26.581853900] [Lamport: 1] [node-8080] Requesting critical section
+[2025-11-25T18:28:26.728300] [Lamport: 1] [node-8080] Received REPLY from http://localhost:8081;
+[2025-11-25T18:59:47.151998300] [Lamport: 0] [node-8080] Node created at http://localhost:8080
+[2025-11-25T19:00:09.522913200] [Lamport: 0] [node-8080] New peer added: http://localhost:8081
+[2025-11-25T19:00:23.931178900] [Lamport: 1] [node-8080] Requesting critical section
+[2025-11-25T19:00:23.939178200] [Lamport: 1] [node-8080] Sending /request to http://localhost:8081 url=http://localhost:8081/request
+[2025-11-25T19:00:24.075728600] [Lamport: 1] [node-8080] Received REPLY from http://localhost:8081
+[2025-11-25T19:09:35.335183500] [Lamport: 0] [node-8080] Node created at http://localhost:8080
+[2025-11-25T19:09:45.512283800] [Lamport: 0] [node-8080] New peer added: http://localhost:8081
+[2025-11-25T19:09:58.636246400] [Lamport: 1] [node-8080] Requesting critical section
+[2025-11-25T19:09:58.644247800] [Lamport: 1] [node-8080] Sending /request to http://localhost:8081 url=http://localhost:8081/request
+[2025-11-25T19:09:58.783677200] [Lamport: 1] [node-8080] Received REPLY from http://localhost:8081
+[2025-11-25T19:18:35.812743600] [Lamport: 0] [node-8080] Node created at http://localhost:8080
+[2025-11-25T19:18:45.371727900] [Lamport: 0] [node-8080] New peer added: http://localhost:8081
+[2025-11-25T19:18:57.920386200] [Lamport: 1] [node-8080] Requesting critical section, ts=1, peers=[http://localhost:8081]
+[2025-11-25T19:18:57.920386200] [Lamport: 1] [node-8080] Initial replyPending=[http://localhost:8081]
+[2025-11-25T19:18:57.928385900] [Lamport: 1] [node-8080] Sending /request to http://localhost:8081 url=http://localhost:8081/request
+[2025-11-25T19:18:58.079400400] [Lamport: 1] [node-8080] Received REPLY from http://localhost:8081
+[2025-11-25T19:27:45.790750600] [Lamport: 0] [node-8080] Node created at http://localhost:8080
+[2025-11-25T19:27:59.366940900] [Lamport: 0] [node-8080] New peer added: http://localhost:8081
+[2025-11-25T19:28:07.001823500] [Lamport: 1] [node-8080] Requesting critical section, ts=1, peers=[http://localhost:8081]
+[2025-11-25T19:28:07.001823500] [Lamport: 1] [node-8080] Initial replyPending=[http://localhost:8081]
+[2025-11-25T19:28:07.008825200] [Lamport: 1] [node-8080] Sending /request to http://localhost:8081 url=http://localhost:8081/request
+[2025-11-25T19:28:07.158743100] [Lamport: 1] [node-8080] Received REPLY from http://localhost:8081
+[2025-11-25T19:38:37.112840300] [Lamport: 1] [node-8080] POST error to http://localhost:8081/request: Connection refused: connect
+[2025-11-25T19:38:37.113842800] [Lamport: 1] [node-8080] Waiting for replies, still pending=[http://localhost:8081]
+[2025-11-25T19:38:37.125844200] [Lamport: 1] [node-8080] requestCS() called but already requesting/in CS. requesting=true, inCS=false
+[2025-11-25T19:38:37.142841] [Lamport: 1] [node-8080] Before remove in receiveReply: pending=[http://localhost:8081], removing 'http://localhost:8081', contains? true
+[2025-11-25T19:38:37.145840100] [Lamport: 1] [node-8080] After remove in receiveReply: pending=[]
+[2025-11-25T19:38:37.148837300] [Lamport: 1] [node-8080] All replies received, notifying waiting threads.
+[2025-11-25T19:38:37.155160700] [Lamport: 1] [node-8080] Entered critical section
+[2025-11-25T19:39:33.143127500] [Lamport: 0] [node-8080] Node created at http://localhost:8080
+[2025-11-25T19:39:58.944755800] [Lamport: 0] [node-8080] New peer added: http://localhost:8081
+[2025-11-25T19:40:18.621291300] [Lamport: 1] [node-8080] Requesting critical section, ts=1, peers=[http://localhost:8081]
+[2025-11-25T19:40:18.629305200] [Lamport: 1] [node-8080] Latch created with count=1
+[2025-11-25T19:40:18.645294400] [Lamport: 1] [node-8080] Sending /request to http://localhost:8081 url=http://localhost:8081/request
+[2025-11-25T19:40:18.887700400] [Lamport: 1] [node-8080] Received REPLY from http://localhost:8081
