@@ -13,14 +13,25 @@ public class RicartAgrawala {
     private volatile boolean requesting = false;
     private volatile int requestTs = 0;
 
-    // латч текущего запроса
     private volatile CountDownLatch latch;
+
 
     public RicartAgrawala(Node node) {
         this.node = node;
     }
 
-    // Запрос критической секции
+    public synchronized void peerRemoved(String url) {
+        url = url.trim();
+        node.getLogger().log("RA: peerRemoved(" + url + ")");
+
+        if (latch != null) {
+            latch.countDown();
+            node.getLogger().log("RA: peer " + url + " removed, latch-- now " + latch.getCount());
+        }
+
+        deferredReplies.remove(url);
+    }
+
     public void requestCS() {
         Set<String> peersSnapshot;
 
@@ -37,7 +48,6 @@ public class RicartAgrawala {
 
             deferredReplies.clear();
 
-            // снимок пиров
             peersSnapshot = new HashSet<>();
             for (String p : node.getPeers()) {
                 String clean = p.trim();
@@ -59,7 +69,6 @@ public class RicartAgrawala {
             node.getLogger().log("Latch created with count=" + latch.getCount());
         }
 
-        // Ожидание ответов — ВНЕ synchronized
         for (String peerUrl : peersSnapshot) {
             RestClient.post(peerUrl, "/request", String.valueOf(requestTs), node);
         }
@@ -78,39 +87,17 @@ public class RicartAgrawala {
         }
     }
 
-    // Выход из КС
-//    public synchronized void releaseCS() {
-//        if (!node.isInCriticalSection()) {
-//            node.getLogger().log("releaseCS() called but not in critical section.");
-//            requesting = false;
-//            latch = null;
-//            return;
-//        }
-//
-//        node.setInCriticalSection(false);
-//        requesting = false;
-//        node.getLogger().log("Leaving critical section, sending deferred replies to: " + deferredReplies);
-//
-//        for (String peerUrl : deferredReplies) {
-//            new Thread(() -> RestClient.post(peerUrl, "/reply", "", node)).start();
-//        }
-//        deferredReplies.clear();
-//        latch = null;
-//    }
-
     public synchronized void releaseCS() {
         node.setInCriticalSection(false);
         requesting = false;
 
         node.getLogger().log("Leaving critical section");
 
-        // 1. Сначала отправляем deferred replies
         for (String peerUrl : deferredReplies) {
             RestClient.post(peerUrl, "/reply", "", node);
         }
         deferredReplies.clear();
 
-        // 2. Теперь — распространяем shared variable
         int val = node.getSharedVariable().read();
         for (String peer : node.getPeers()) {
             RestClient.post(peer, "/syncSharedValue", String.valueOf(val), node);
@@ -120,7 +107,6 @@ public class RicartAgrawala {
     }
 
 
-    // Входящий /request
     public synchronized void receiveRequest(String senderUrl, int ts) {
         senderUrl = senderUrl.trim();
         node.getClock().update(ts);
@@ -145,7 +131,6 @@ public class RicartAgrawala {
         }
     }
 
-    // Входящий /reply
     public void receiveReply(String senderUrl) {
         senderUrl = senderUrl.trim();
 

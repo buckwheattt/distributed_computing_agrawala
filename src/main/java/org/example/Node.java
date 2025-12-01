@@ -45,6 +45,12 @@ public class Node {
 
     public void setInCriticalSection(boolean v) { inCriticalSection = v; }
 
+    private Set<String> previousPeers = ConcurrentHashMap.newKeySet();
+
+    public Set<String> getPreviousPeers() {
+        return previousPeers;
+    }
+
     public void addPeer(String url) {
         if (url == null) return;
         url = url.trim();
@@ -74,7 +80,12 @@ public class Node {
     public void removePeer(String url) {
         peers.remove(url);
         logger.log("Peer removed: " + url);
+
+        if (ricart != null) {
+            ricart.peerRemoved(url);
+        }
     }
+
 
     public void shutdown() {
         logger.log("Node shutting down...");

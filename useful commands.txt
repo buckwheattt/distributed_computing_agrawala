@@ -1,7 +1,9 @@
 mvn clean package
 
-java -jar target/agrawala-1.0-SNAPSHOT-jar-with-dependencies.jar 8080 ""
+java -jar target/agrawala-1.0-SNAPSHOT-jar-with-dependencies.jar 8084 ""
 
 java -jar target/agrawala-1.0-SNAPSHOT-jar-with-dependencies.jar 8081 "http://localhost:8080"
 
 curl -X POST http://localhost:8080/join -d "http://localhost:8081"
+
+run_full_demo.bat
