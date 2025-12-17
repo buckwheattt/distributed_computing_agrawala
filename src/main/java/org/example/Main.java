@@ -225,8 +225,8 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println("Commands: enter, read, write");
-                    System.out.println("Node commands: join, leave, revive, kill, enterCS, leaveCS");
+                    System.out.println("Commands: enter, read, write, enterCS, leaveCS");
+                    System.out.println("Node commands: join, leave, revive, kill");
             }
         }
     }
