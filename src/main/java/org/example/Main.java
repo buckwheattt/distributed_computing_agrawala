@@ -8,12 +8,14 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        if (args.length < 2) {
-            System.out.println("Usage: java -jar node.jar <port> <comma_separated_peer_urls>");
+        if (args.length < 3) {
+            System.out.println("Usage: java -jar node.jar <port> <myHostOrIp> <comma_separated_peer_urls>");
             return;
         }
 
         int port = Integer.parseInt(args[0]);
+        String myHost = args[1];
+        String peersArg = args[2];
 
         String[] peerArray = args[1].split(",");
         Set<String> peers = new HashSet<>();
@@ -21,7 +23,7 @@ public class Main {
             if (!p.isBlank()) peers.add(p.trim());
         }
 
-        Node node = new Node("node-" + port, port, peers);
+        Node node = new Node("node-" + port, myHost, port, peers);
 
         SharedVariable shared = new SharedVariable();
         RicartAgrawala ra = new RicartAgrawala(node);
@@ -34,8 +36,6 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-//            System.out.println("Commands: enter, read, write");
-//            System.out.println("Node commands: join, leave, revive, kill");
             System.out.print("> ");
 
             String cmd = scanner.nextLine().trim();
@@ -57,23 +57,21 @@ public class Main {
                         } catch (Exception e) {
                             e.printStackTrace();
                         } finally {
-                            ra.releaseCS();  // SYNC broadcast
+                            ra.releaseCS();
                         }
                     }).start();
                     break;
 
-                // ---------------------- READ ----------------------
                 case "read":
                     System.out.println("Value = " + shared.read());
                     break;
 
-                // ---------------------- WRITE ----------------------
                 case "write":
                     System.out.print("New value: ");
                     int newVal = Integer.parseInt(scanner.nextLine());
 
                     new Thread(() -> {
-                        ra.requestCS();  // пишем только в КС
+                        ra.requestCS();
                         try {
                             int old = shared.read();
                             shared.write(newVal);
@@ -86,12 +84,11 @@ public class Main {
                         } catch (Exception e) {
                             e.printStackTrace();
                         } finally {
-                            ra.releaseCS();  // SYNC broadcast
+                            ra.releaseCS();
                         }
                     }).start();
                     break;
 
-                // ---------------------- JOIN -----------------------
                 case "join":
                     System.out.print("Peer URL: ");
                     String peerUrl = scanner.nextLine().trim();
@@ -130,9 +127,6 @@ public class Main {
 
                     break;
 
-
-
-                // ---------------------- LEAVE ----------------------
                 case "leave":
                     node.getLogger().log("LEAVE requested from console");
 
@@ -149,7 +143,6 @@ public class Main {
                     node.getLogger().log("Graceful leave done. Node is isolated but alive.");
                     break;
 
-                // ---------------------- REVIVE ---------------------
                 case "revive":
                     new Thread(() -> {
                         node.getLogger().log("REVIVE started...");
@@ -190,7 +183,6 @@ public class Main {
                                 node.getSharedVariable().write(val);
                                 node.getLogger().log("REVIVE: shared variable updated = " + val);
                             } else {
-                                // проверяем живой ли peer из ответа
                                 if (RestClient.ping(line)) {
                                     node.addPeer(line);
                                     alivePeers.add(line);
@@ -203,16 +195,38 @@ public class Main {
                     }).start();
                     break;
 
-                // ===== KILL =====
                 case "kill":
                     node.getLogger().log("!!! KILL invoked — terminating process immediately !!!");
                     System.exit(1);
                     break;
 
-                // --------------------- DEFAULT ---------------------
+                case "enterCS":
+                    new Thread(() -> {
+                        ra.requestCS();
+                        try {
+                            int old = shared.read();
+                            int newwVal = old + 1;
+                            shared.write(newwVal);
+
+                            node.getLogger().log("CRITICAL SECTION: shared variable " +
+                                    old + " -> " + newwVal);
+
+                            Thread.sleep(1000);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }).start();
+                    break;
+
+                case "leaveCS":
+                    new Thread(() -> {
+                        ra.releaseCS();
+                    }).start();
+                    break;
+
                 default:
                     System.out.println("Commands: enter, read, write");
-                    System.out.println("Node commands: join, leave, revive, kill");
+                    System.out.println("Node commands: join, leave, revive, kill, enterCS, leaveCS");
             }
         }
     }

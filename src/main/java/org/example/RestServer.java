@@ -11,7 +11,7 @@ public class RestServer {
         RicartAgrawala ra = node.getRicartAgrawala();
         System.out.println("DEBUG: ricart in RestServer.start = " + ra);
 
-        // ---------- RA REQUEST ----------
+
         post("/request", (req, res) -> {
             String raw = req.body();
             String[] parts = raw.split(";");
@@ -23,7 +23,7 @@ public class RestServer {
             return "OK";
         });
 
-        // ---------- RA REPLY ----------
+
         post("/reply", (req, res) -> {
             String senderUrl = req.body().trim();
 
@@ -33,7 +33,7 @@ public class RestServer {
             return "OK";
         });
 
-        // ---------- OTHER NODE LEAVES ----------
+
         post("/leave", (req, res) -> {
             String leavingUrl = req.body().trim();
             node.getLogger().log("Incoming LEAVE from " + leavingUrl);
@@ -42,7 +42,7 @@ public class RestServer {
             return "OK";
         });
 
-        // ---------- JOIN ----------
+
         post("/join", (req, res) -> {
             String peerUrl = req.body().trim();
             node.getLogger().log("JOIN from " + peerUrl);
@@ -86,7 +86,6 @@ public class RestServer {
         });
 
 
-        // ---------- SYNC SHARED VARIABLE ----------
         post("/syncSharedValue", (req, res) -> {
             String raw = req.body();
             String[] parts = raw.split(";");
@@ -109,8 +108,6 @@ public class RestServer {
         });
 
 
-
-        // ---------- ENTER CS (REST wrapper) ----------
         post("/enterCS", (req, res) -> {
             new Thread(() -> {
                 ra.requestCS();

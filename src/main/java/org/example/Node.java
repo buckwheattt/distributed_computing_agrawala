@@ -16,10 +16,10 @@ public class Node {
     private RicartAgrawala ricart;
     private SharedVariable shared;
 
-    public Node(String id, int port, Set<String> peerUrls) throws IOException {
+    public Node(String id, String myHost, int port, Set<String> peerUrls) throws IOException {
         this.id = id;
         this.port = port;
-        this.address = "http://localhost:" + port;
+        this.address = "http://" + myHost + ":" + port;
         this.clock = new LamportClock();
         this.logger = new Logger(id, clock);
 
