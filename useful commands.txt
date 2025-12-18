@@ -1,6 +1,6 @@
 mvn clean package
 
-java -jar target/agrawala-1.0-SNAPSHOT-jar-with-dependencies.jar 8084 ""
+java -jar agrawala.jar 8084 http://a.a.a.a ""
 
 java -jar target/agrawala-1.0-SNAPSHOT-jar-with-dependencies.jar 8081 "http://localhost:8080"
 
@@ -11,7 +11,8 @@ run_full_demo.bat
 scp agrawala.jar adminn@192.168.56.102:/home/adminn/
 
 
-
+sudo ip link set enp0s8 up
+sudo dhclient enp0s8
 
 
 

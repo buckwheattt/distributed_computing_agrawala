@@ -67,12 +67,18 @@ public class Node {
         }
     }
     public void broadcastSharedVariable() {
-        int val = shared.read();
+        SharedVariable sv = shared;
+        int val = sv.read();
+        int ts = sv.getLastTs();
+        String writer = sv.getLastWriter();
+
+        String payload = ts + ";" + writer + ";" + val;
         for (String peer : peers) {
-            RestClient.post(peer, "/syncSharedValue", String.valueOf(val), this);
+            RestClient.post(peer, "/syncSharedValue", payload, this);
         }
-        logger.log("SYNC broadcast (manual or RA): value=" + val);
+        logger.log("SYNC broadcast: ts=" + ts + " writer=" + writer + " val=" + val);
     }
+
 
 
 

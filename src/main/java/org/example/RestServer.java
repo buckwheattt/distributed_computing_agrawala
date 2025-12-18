@@ -87,21 +87,25 @@ public class RestServer {
 
 
         post("/syncSharedValue", (req, res) -> {
-            String raw = req.body();
-            String[] parts = raw.split(";");
+            String[] parts = req.body().split(";");
 
-            String senderUrl = parts[0];
-            int value = Integer.parseInt(parts[1]);
+            String senderUrl = parts[0].trim();  // это добавил RestClient
+            int ts = Integer.parseInt(parts[1].trim());
+            String writerId = parts[2].trim();
+            int value = Integer.parseInt(parts[3].trim());
 
-            node.getSharedVariable().write(value);
+            node.getClock().update(ts);
 
-            node.getLogger().log(
-                    "SYNC: shared variable updated to " + value +
-                            " from " + senderUrl
-            );
+            boolean applied = node.getSharedVariable().applyIfNewer(value, ts, writerId);
+
+            node.getLogger().log("SYNC from " + senderUrl +
+                    " ts=" + ts + " writer=" + writerId + " val=" + value +
+                    " applied=" + applied);
 
             return "OK";
         });
+
+
 
         get("/getSharedValue", (req, res) -> {
             return "" + node.getSharedVariable().read();
@@ -116,7 +120,9 @@ public class RestServer {
                     SharedVariable sv = node.getSharedVariable();
                     int old = sv.read();
                     int newVal = old + 1;
-                    sv.write(newVal);
+                    int writeTs = node.getClock().tick();
+                    sv.writeLocal(newVal, writeTs, node.getId());
+
 
                     node.getLogger().log(
                             "CRITICAL SECTION (REST): " + old + " -> " + newVal

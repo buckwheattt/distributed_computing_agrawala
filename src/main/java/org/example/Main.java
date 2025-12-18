@@ -46,16 +46,22 @@ public class Main {
                     new Thread(() -> {
                         ra.requestCS();
                         try {
-                            int old = shared.read();
-                            int newVal = old + 1;
-                            shared.write(newVal);
+                            SharedVariable sv = node.getSharedVariable();
 
-                            node.getLogger().log("CRITICAL SECTION: shared variable " +
-                                    old + " -> " + newVal);
+                            int old = sv.read();
+                            int newVal = old + 1;            // или manual newVal
+
+                            int writeTs = node.getClock().tick();
+                            sv.writeLocal(newVal, writeTs, node.getId());
+
+                            // 🔥 сразу рассылаем новое значение
+                            node.broadcastSharedVariable();  // только сделай чтобы он слал ts;writer;val
+
+                            node.getLogger().log("CS: " + old + " -> " + newVal + " ts=" + writeTs);
 
                             Thread.sleep(1000);
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
                         } finally {
                             ra.releaseCS();
                         }
@@ -73,16 +79,22 @@ public class Main {
                     new Thread(() -> {
                         ra.requestCS();
                         try {
-                            int old = shared.read();
-                            shared.write(newVal);
+                            SharedVariable sv = node.getSharedVariable();
 
-                            node.getLogger().log(
-                                    "CRITICAL SECTION (MANUAL WRITE): " + old + " -> " + newVal
-                            );
+                            int old = sv.read();
+                            int newwVal = old + 1;            // или manual newVal
+
+                            int writeTs = node.getClock().tick();
+                            sv.writeLocal(newwVal, writeTs, node.getId());
+
+                            // 🔥 сразу рассылаем новое значение
+                            node.broadcastSharedVariable();  // только сделай чтобы он слал ts;writer;val
+
+                            node.getLogger().log("CS: " + old + " -> " + newwVal + " ts=" + writeTs);
 
                             Thread.sleep(1000);
-                        } catch (Exception e) {
-                            e.printStackTrace();
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
                         } finally {
                             ra.releaseCS();
                         }
@@ -117,7 +129,9 @@ public class Main {
                         String sv = RestClient.get(peerUrl + "/getSharedValue", node);
                         if (sv != null) {
                             int value = Integer.parseInt(sv.trim());
-                            node.getSharedVariable().write(value);
+                            int writeTs = node.getClock().tick();
+                            shared.writeLocal(value, writeTs, node.getId());
+
                             node.getLogger().log("JOIN: synchronized shared variable = " + value);
                         } else {
                             node.getLogger().log("JOIN: failed to get shared variable from " + peerUrl);
@@ -180,7 +194,9 @@ public class Main {
                         for (String line : lines) {
                             if (line.startsWith("VALUE=")) {
                                 int val = Integer.parseInt(line.substring(6));
-                                node.getSharedVariable().write(val);
+                                int writeTs = node.getClock().tick();
+                                shared.writeLocal(val, writeTs, node.getId());
+
                                 node.getLogger().log("REVIVE: shared variable updated = " + val);
                             } else {
                                 if (RestClient.ping(line)) {
@@ -206,8 +222,9 @@ public class Main {
                         try {
                             int old = shared.read();
                             int newwVal = old + 1;
-                            shared.write(newwVal);
-
+                            int writeTs = node.getClock().tick();
+                            shared.writeLocal(newwVal, writeTs, node.getId());
+                            node.broadcastSharedVariable();
                             node.getLogger().log("CRITICAL SECTION: shared variable " +
                                     old + " -> " + newwVal);
 

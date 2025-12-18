@@ -98,10 +98,17 @@ public class RicartAgrawala {
         }
         deferredReplies.clear();
 
-        int val = node.getSharedVariable().read();
+        SharedVariable sv = node.getSharedVariable();
+        int ts = sv.getLastTs();
+        String writer = sv.getLastWriter();
+        int val = sv.read();
+
+        String payload = ts + ";" + writer + ";" + val;
         for (String peer : node.getPeers()) {
-            RestClient.post(peer, "/syncSharedValue", String.valueOf(val), node);
+            RestClient.post(peer, "/syncSharedValue", payload, node);
         }
+        node.getLogger().log("SYNC broadcast complete: ts=" + ts + " writer=" + writer + " val=" + val);
+
 
         node.getLogger().log("SYNC broadcast complete: val=" + val);
     }
