@@ -111,7 +111,6 @@ Lamport logical clock
 Critical section state  
 Deferred replies queue  
 Local copy of the shared variable   
-Popis funkce systému DSVA
 
 ### Dynamic Topology
 
