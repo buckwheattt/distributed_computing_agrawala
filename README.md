@@ -93,14 +93,14 @@ Leaves the critical section and sends deferred replies
 If another node is already in the critical section, the requester must wait based on Lamport timestamps. 
 
 ### Console Commands
-enter -	Requests access to the critical section (auto read + increment + write)
-enterCS -	Enter critical section manually
-leaveCS -	Leave the critical section
-read - Read the shared variable (without CS)
-write -	Write a custom value to the shared variable (inside CS)
-join - Join the network topology
-leave	- Gracefully disconnect from the system
-revive - Restore communication after leave
+enter -	Requests access to the critical section (auto read + increment + write)  
+enterCS -	Enter critical section manually  
+leaveCS -	Leave the critical section  
+read - Read the shared variable (without CS)  
+write -	Write a custom value to the shared variable (inside CS)  
+join - Join the network topology  
+leave	- Gracefully disconnect from the system  
+revive - Restore communication after leave  
 kill - Simulate node crash
 
 ### Node State
@@ -124,8 +124,6 @@ revive — reconnects to previously known peers
 kill — simulates sudden failure without notification
 
 Other nodes continue functioning even if one node crashes. 
-
-Popis funkce systému DSVA
 
 ### Educational Purpose  
 This project is designed to demonstrate:  
